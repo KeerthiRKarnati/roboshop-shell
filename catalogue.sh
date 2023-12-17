@@ -98,4 +98,6 @@ mongo --host $MongoDB_Host </app/schema/catalogue.js &>> $LOGFILE
 
 VALIDATE $? "Loading catalogue data into Mongo DB"
 
+#check netstat -lnpt
+#check sudo less /var/log/messages
 
