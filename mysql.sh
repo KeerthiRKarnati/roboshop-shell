@@ -53,9 +53,6 @@ mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOGFILE
 
 VALIDATE $? "setting up mysql root password"
 
-mysql -uroot -pRoboShop@1 &>> $LOGFILE
-
-VALIDATE $? "Checking the new password"
 
 #check netstat -lnpt
 #check sudo less /var/log/messages
