@@ -8,7 +8,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-exec &>$LOGFILE #everything will be stored in logfile(echo,...)
+exec &>$LOGFILE #everything will be stored in logfile(echo,... )
 
 echo -e "Script started executed at $Y $TIMESTAMP $N"
 
