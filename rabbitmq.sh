@@ -29,31 +29,31 @@ else
     echo -e "You are $G root $N user"
 fi
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>> $LOGFILE
 
 VALIDATE $? "Downloading erlang script"
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>> $LOGFILE
 
 VALIDATE $? "Downloading rabbitmq script"
 
-dnf install rabbitmq-server -y 
+dnf install rabbitmq-server -y &>> $LOGFILE 
 
 VALIDATE $? "Installing rabbitmq"
 
-systemctl enable rabbitmq-server 
+systemctl enable rabbitmq-server &>> $LOGFILE
 
 VALIDATE $? "Enabling rabbitmq"
 
-systemctl start rabbitmq-server 
+systemctl start rabbitmq-server &>> $LOGFILE 
 
 VALIDATE $? "Starting rabbitmq"
 
-rabbitmqctl add_user roboshop roboshop123
+rabbitmqctl add_user roboshop roboshop123 &>> $LOGFILE
 
 VALIDATE $? "Creating user"
 
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>> $LOGFILE
 
 VALIDATE $? "Setting Permissions"
 
