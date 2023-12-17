@@ -50,8 +50,6 @@ else
     echo -e "roboshop user already exist $Y SKIPPING $N"
 fi
 
-VALIDATE $? "Creating user roboshop"
-
 mkdir -p /app &>> $LOGFILE #-p means, if dir already exists - doesn't create, if not exist - create dir
 
 VALIDATE $? "Creating app directory"
