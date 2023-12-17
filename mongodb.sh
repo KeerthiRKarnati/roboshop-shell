@@ -44,7 +44,7 @@ systemctl start mongod &>> $LOGFILE
 
 VALIDATE $? "Starting MongoDB"
 
-sed -i 's/127.0.0.0/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
 
 VALIDATE $? "Remote access to MongoDB"
 
