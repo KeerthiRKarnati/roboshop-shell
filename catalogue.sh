@@ -7,7 +7,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-MongoDB_Host = mongodb.aiawsdevops.online
+MongoDB_Host=mongodb.aiawsdevops.online
 
 echo -e "Script started executed at $Y $TIMESTAMP $N" &>> $LOGFILE
 
