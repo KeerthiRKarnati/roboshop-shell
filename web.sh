@@ -9,7 +9,7 @@ Y="\e[33m"
 N="\e[0m"
 MongoDB_Host=mongodb.aiawsdevops.online
 
-echo -e "Script started executed at $Y $TIMESTAMP $N" &>> $LOGFILE
+echo "Script started executed at $Y $TIMESTAMP $N" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -43,7 +43,7 @@ VALIDATE $? "Starting nginx"
 
 rm -rf /usr/share/nginx/html/* &>> $LOGFILE
 
-VALIDATE $? "Removing default content in we browser"
+VALIDATE $? "Removing default content in web browser"
 
 curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
 
