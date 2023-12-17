@@ -51,3 +51,5 @@ VALIDATE $? "Remote access to MongoDB"
 systemctl restart mongod &>> $LOGFILE
 
 VALIDATE $? "Restarting MongoDB"
+
+#check netstat -lntp
