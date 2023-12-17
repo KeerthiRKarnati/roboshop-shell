@@ -70,7 +70,7 @@ npm install &>> $LOGFILE
 
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>> $LOGFILE# Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
+cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>> $LOGFILE # Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
 
 VALIDATE $? "Copying user service file"
 

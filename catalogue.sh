@@ -41,7 +41,7 @@ dnf install nodejs -y &>> $LOGFILE
 
 VALIDATE $? "Installing Nodejs 18"
 
-id roboshop #if we use set -e it will be failure here because roboshop user does not exist
+id roboshop #if we use set -e it will be failure here because roboshop user does not exist 
 if [ $? -ne 0 ]
 then
     useradd roboshop &>> $LOGFILE
@@ -70,7 +70,7 @@ npm install &>> $LOGFILE
 
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE# Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE # Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
 
 VALIDATE $? "Copying catalogue service file"
 

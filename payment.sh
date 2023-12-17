@@ -29,7 +29,7 @@ else
     echo -e "You are $G root $N user"
 fi
 
-dnf install python36 gcc python3-devel -y
+dnf install python36 gcc python3-devel -y &>> $LOGFILE
 
 VALIDATE $? "Installing python"
 
@@ -46,35 +46,35 @@ mkdir -p /app &>> $LOGFILE #-p means, if dir already exists - doesn't create, if
 
 VALIDATE $? "Creating app directory"
 
-curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip
+curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip &>> $LOGFILE
 
 VALIDATE $? "Downloading payment application"
 
-cd /app 
+cd /app &>> $LOGFILE
 
 VALIDATE $? "Moving to app directory"
 
-unzip -o /tmp/payment.zip
+unzip -o /tmp/payment.zip &>> $LOGFILE
 
 VALIDATE $? "Unzipping the Payment application"
 
-pip3.6 install -r requirements.txt
+pip3.6 install -r requirements.txt &>> $LOGFILE
 
 VALIDATE $? "Install Dependencies"
 
-cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service &>> $LOGFILE# Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
+cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service &>> $LOGFILE # Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
 
 VALIDATE $? "Copying payment service file"
 
-systemctl daemon-reload
+systemctl daemon-reload &>> $LOGFILE
 
 VALIDATE $? "Payment Daemon reloading"
 
-systemctl enable payment 
+systemctl enable payment &>> $LOGFILE 
 
 VALIDATE $? "Enabling payment services"
 
-systemctl start payment
+systemctl start payment &>> $LOGFILE
 
 VALIDATE $? "Starting Payment services"
 

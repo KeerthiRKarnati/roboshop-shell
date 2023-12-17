@@ -70,7 +70,7 @@ npm install &>> $LOGFILE
 
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>> $LOGFILE# Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
+cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>> $LOGFILE # Currently, we are in app directory but catalogue.service app was downloaded in roboshop-shell so give absolute path
 
 VALIDATE $? "Copying cart service file"
 
