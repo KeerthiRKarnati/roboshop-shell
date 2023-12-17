@@ -8,7 +8,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-exec &>$LOGFILE #everything will be stored in logfile(echo,... )
+exec &>$LOGFILE #everything will be stored in logfile(echo,...   )
 
 echo -e "Script started executed at $Y $TIMESTAMP $N"
 
@@ -42,7 +42,7 @@ dnf install redis -y
 
 VALIDATE $? "Installing Redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf
 
 VALIDATE $? "Allowing remote connections"
 
