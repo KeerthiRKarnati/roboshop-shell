@@ -29,31 +29,31 @@ else
     echo -e "You are $G root $N user"
 fi
 
-dnf module disable mysql -y
+dnf module disable mysql -y &>> $LOGFILE
 
 VALIDATE $? "Disabling current version of mysql"
 
-cp /home/centos/roboshop-shell/mysql.repo /etc/yum.repos.d/mysql.repo
+cp /home/centos/roboshop-shell/mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOGFILE
 
 VALIDATE $? "Copying mysql repo"
 
-dnf install mysql-community-server -y
+dnf install mysql-community-server -y &>> $LOGFILE
 
 VALIDATE $? "Installing MYSQL server"
 
-systemctl enable mysqld
+systemctl enable mysqld &>> $LOGFILE
 
 VALIDATE $? "Enable Mysql"
 
-systemctl start mysqld
+systemctl start mysqld &>> $LOGFILE
 
 VALIDATE $? "Start mysql"
 
-mysql_secure_installation --set-root-pass RoboShop@1
+mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOGFILE
 
 VALIDATE $? "setting up mysql root password"
 
-mysql -uroot -pRoboShop@1
+mysql -uroot -pRoboShop@1 &>> $LOGFILE
 
 VALIDATE $? "Checking the new password"
 
