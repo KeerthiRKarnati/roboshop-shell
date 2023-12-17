@@ -41,7 +41,7 @@ dnf install nodejs -y &>> $LOGFILE
 
 VALIDATE $? "Installing Nodejs 18"
 
-id roboshop
+id roboshop #if we use set -e it will be failure here because roboshop user does not exist
 if [ $? -ne 0 ]
 then
     useradd roboshop &>> $LOGFILE
