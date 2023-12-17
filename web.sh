@@ -29,39 +29,39 @@ else
     echo -e "You are $G root $N user"
 fi
 
-dnf install nginx -y
+dnf install nginx -y &>> $LOGFILE
 
 VALIDATE $? "Installing Nginx"
 
-systemctl enable nginx
+systemctl enable nginx &>> $LOGFILE
 
 VALIDATE $? "Enabling nginx"
 
-systemctl start nginx
+systemctl start nginx &>> $LOGFILE
 
 VALIDATE $? "Starting nginx"
 
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/* &>> $LOGFILE
 
 VALIDATE $? "Removing default content in we browser"
 
-curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip
+curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
 
 VALIDATE $? "Downloading Web application"
 
-cd /usr/share/nginx/html
+cd /usr/share/nginx/html &>> $LOGFILE
 
 VALIDATE $? "Moving  into nginx (/usr/share/nginx/html) directory"
 
-unzip -o /tmp/web.zip
+unzip -o /tmp/web.zip &>> $LOGFILE
 
 VALIDATE $? "Unzipping the web application"
 
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE
 
 VALIDATE $? "Copying roboshop reverse proxy conf" 
 
-systemctl restart nginx 
+systemctl restart nginx &>> $LOGFILE
 
 VALIDATE $? "Restarted nginx"
 
