@@ -53,3 +53,5 @@ VALIDATE $? "Enabling Redis"
 systemctl start redis
 
 VALIDATE $? "Starting Redis"
+
+#check netstat -lntp
