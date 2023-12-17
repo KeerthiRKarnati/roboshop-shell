@@ -41,11 +41,18 @@ dnf install nodejs -y &>> $LOGFILE
 
 VALIDATE $? "Installing Nodejs 18"
 
-useradd roboshop &>> $LOGFILE
+id roboshop
+if [ $? -ne 0 ]
+then
+    useradd roboshop &>> $LOGFILE
+    VALIDATE $? "roboshop user creation"
+else 
+    echo -e "roboshop user already exist $Y SKIPPING $N"
+fi
 
 VALIDATE $? "Creating user roboshop"
 
-mkdir /app &>> $LOGFILE
+mkdir -p /app &>> $LOGFILE #-p means, if dir already exists - doesn't create, if not exist - create dir
 
 VALIDATE $? "Creating app directory"
 
@@ -57,7 +64,7 @@ cd /app &>> $LOGFILE
 
 VALIDATE $? "Entering into app directory"
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE #-o means overwrite the data
 
 VALIDATE $? "Unzipping the catalogue application"
 
