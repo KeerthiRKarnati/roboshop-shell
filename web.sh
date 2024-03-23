@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#this is edited in git
 ID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
